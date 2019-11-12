@@ -8,9 +8,11 @@ def max_subarray(ns):
         if n < 0:  # end of a positive subarray
             cost -= n
             continue
+
+        if current > 0:
+            sums.append(current)
+
         if current - cost < 0:  # cannot merge
-            if current > 0:
-                sums.append(current)
             current = n
         else:  # merge positive subarrays
             current += n - cost
